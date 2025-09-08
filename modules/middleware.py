@@ -14,6 +14,11 @@ def require_auth(handler):
     async def wrapper(message: types.Message, *args, **kwargs):
         user_id = message.from_user.id
         allowed_user_id = os.getenv("ALLOWED_USER_ID")
+
+        logging.debug(
+            f"Auth check: user_id={user_id}, allowed_user_id={allowed_user_id}"
+        )
+
         if not allowed_user_id:
             logging.error("ALLOWED_USER_ID environment variable not set")
             await message.answer("Bot configuration error")
@@ -22,6 +27,8 @@ def require_auth(handler):
             await message.answer("Unauthorized access")
             logging.warning(f"Unauthorized access attempt by user {user_id}")
             return
+
+        logging.debug(f"Auth passed for user {user_id}, calling handler")
         return await handler(message, *args, **kwargs)
 
     return wrapper
