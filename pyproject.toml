@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "cal-helper-bot"
 version = "0.1"
@@ -8,7 +12,17 @@ dependencies = [
     "aider-chat>=0.86.1",
     "aiogram>=3.22.0",
     "redis>=6.4.0",
+    "python-dotenv>=1.0.0",
 ]
+
+[tool.setuptools.packages.find]
+include = ["modules*"]
+
+[project.scripts]
+bot = "main:run_bot"
+
+[tool.setuptools]
+py-modules = ["main"]
 
 [dependency-groups]
 dev = [

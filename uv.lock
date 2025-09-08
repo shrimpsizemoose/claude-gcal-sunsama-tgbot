@@ -275,10 +275,11 @@ wheels = [
 [[package]]
 name = "cal-helper-bot"
 version = "0.1"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "aider-chat" },
     { name = "aiogram" },
+    { name = "python-dotenv" },
     { name = "redis" },
 ]
 
@@ -295,6 +296,7 @@ dev = [
 requires-dist = [
     { name = "aider-chat", specifier = ">=0.86.1" },
     { name = "aiogram", specifier = ">=3.22.0" },
+    { name = "python-dotenv", specifier = ">=1.0.0" },
     { name = "redis", specifier = ">=6.4.0" },
 ]
 
