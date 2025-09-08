@@ -1,0 +1,14 @@
+.envrc
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+*.aider*
+
+# Finder (MacOS) folder config
+
+**/*.pyc
+
+.venv/
